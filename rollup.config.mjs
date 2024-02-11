@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import babel from '@rollup/plugin-babel';
 
 const packageJson = require("./package.json");
 
@@ -25,6 +26,7 @@ export default [
         plugins: [
             peerDepsExternal(),
             resolve(),
+            babel({ babelHelpers: 'bundled' }),
             commonjs(),
             typescript({ tsconfig: "./tsconfigRollup.json" }),
             terser(),
